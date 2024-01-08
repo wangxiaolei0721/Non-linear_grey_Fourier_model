@@ -22,7 +22,7 @@ tiledlayout(3,1,'TileSpacing','Compact','Padding','Compact'); % new subfigure
 crudeoil_train = crudeoil(train_data_index);
 date_train=date(train_data_index);
 nexttile;
-plot(date_train,crudeoil_train)
+plot(date_train,crudeoil_train,'LineWidth',1.5)
 set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),
 xlabel('Date','FontSize',12);
 xtickformat('yyyy-MM')
@@ -30,7 +30,7 @@ xtickformat('yyyy-MM')
 crudeoil_train_val = crudeoil(train_val_data_index);
 date_train_val = date(train_val_data_index);
 nexttile;
-plot(date_train_val,crudeoil_train_val)
+plot(date_train_val,crudeoil_train_val,'LineWidth',1.5)
 set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),
 xlabel('Date','FontSize',12);
 xtickformat('yyyy-MM')
@@ -38,7 +38,7 @@ xtickformat('yyyy-MM')
 crudeoil_train_test = crudeoil(train_test_data_index);
 date_train_test = date(train_test_data_index);
 nexttile;
-plot(date_train_test,crudeoil_train_test)
+plot(date_train_test,crudeoil_train_test,'LineWidth',1.5)
 set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),
 xlabel('Date','FontSize',12);
 xtickformat('yyyy-MM')
@@ -50,7 +50,7 @@ figure
 [ xfreq,xpower] = fourier_transform(crudeoil_train_val_detrend(2:end));
 % peak detection plot
 % findpeaks(xpower,xfreq,'MinPeakDistance',1/12,'MinPeakProminence',2000000);% 'Annotate','extents','prominence', 'Threshold'
-plot(xfreq,xpower)
+plot(xfreq,xpower,'LineWidth',1.5)
 grid off
 xline(xfreq(24),'--','HandleVisibility','off')
 text(xfreq(24),5000000,['$\rightarrow f$=',num2str(xfreq(24))],'Interpreter','latex')
@@ -104,6 +104,7 @@ allFigures = findall(0, 'Type', 'figure');
 figure(allFigures(1))
 set(gca,'FontName','Book Antiqua','FontSize',10)
 title('','FontWeight','bold','FontSize',12);
+set(findall(gcf,'type','line'),'linewidth',1.5)
 % savefig(gcf,'.\figure\crude_oil_process.fig');
 figure(allFigures(2))
 set(gca,'FontName','Book Antiqua','FontSize',10)
@@ -149,7 +150,7 @@ while (k+train_data_length+test_step-1)<=datalength
     k=k+test_step;
     % % figure setting
     nexttile;
-    plot([date_train;date_test],[ oil_train;oil_test])
+    plot([date_train;date_test],[ oil_train;oil_test],'LineWidth',1.5)
     hold on
     plot([date_train;date_test],oil_fit_pre)
     rectangle('Position', [0, 1000, 5480, 1000]);

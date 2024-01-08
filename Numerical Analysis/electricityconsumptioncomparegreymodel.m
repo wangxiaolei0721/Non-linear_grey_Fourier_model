@@ -30,6 +30,14 @@ electricity_pre_all=[];
 fig=figure('unit','centimeters','position',[2,2,15,15],'PaperPosition',[2, 2, 15,15],'PaperSize',[15,15]);
 tit={['(a) First roll '],['(b) Second roll '],['(c) Third roll '],['(d) Fourth roll '] };
 tit0=1;
+col_matrix = [0,0,0;
+    87, 103, 250;
+    160, 98, 205;
+    60, 191, 255;
+    150, 233, 130;
+    240, 163, 70;
+    239, 55, 81]/255;
+colororder(col_matrix);
 len=["Actual data","GM(1,1|cos,sin)","DGGM(1,1)","SGM(1,1)","GFM(1,1,1)","DGFM(1,1,1)","NGFM(1,1,1)"];
 tiledlayout(3,1,'TileSpacing','Compact','Padding','Compact'); % new subfigure
 while (k+train_data_length+test_step-1)<=datalength
@@ -61,9 +69,9 @@ while (k+train_data_length+test_step-1)<=datalength
     %     disp(k)
     % figure setting
     nexttile;
-    plot([datequarter_train;datequarter_test],[ electricity_train;electricity_test])
+    plot([datequarter_train;datequarter_test],[ electricity_train;electricity_test],'LineWidth',0.7)
     hold on
-    plot([datequarter_train;datequarter_test],electricity_fit_pre,'LineWidth',0.3)
+    plot([datequarter_train;datequarter_test],electricity_fit_pre,'LineWidth',0.7)
     rectangle('Position', [-60, 0, 2190, 600]);
     rectangle('Position', [2130, 0, 380, 600],'FaceColor',[0.05 0.05 0.05 0.05]);
     set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),

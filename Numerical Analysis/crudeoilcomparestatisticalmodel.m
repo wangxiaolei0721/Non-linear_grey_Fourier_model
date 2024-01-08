@@ -106,6 +106,13 @@ tit={['(a) First roll '],['(b) Second roll '],['(c) Third roll '],['(d) Fourth r
     ['(e) Fifth roll '],['(f) Sixth roll '],['(g) Third roll '],['(h) Seventh roll '],...
     ['(h) Eighth roll ']};
 tit0=1;
+col_matrix = [0,0,0;
+    87, 103, 250;
+    160, 98, 205;
+    150, 233, 130;
+    240, 163, 70;
+    239, 55, 81]/255;
+colororder(col_matrix);
 len=["Actual data","SARIMA","ES","NNAR","DNN","NGFM(1,1,5)"];
 tiledlayout(3,3,'TileSpacing','Compact','Padding','Compact'); % new subfigure
 for i=1:9
@@ -113,7 +120,7 @@ for i=1:9
     date_roll=[date_train_all((i-1)*train_data_length+1:i*train_data_length);date_test_all((i-1)*test_step+1:i*test_step)];
     crudeoil_roll=[crudeoil_train_all((i-1)*train_data_length+1:i*train_data_length);crudeoil_test_all((i-1)*test_step+1:i*test_step)];
     crudeoil_roll_fit=[crudeoil_fit_all((i-1)*train_data_length+1:i*train_data_length,:);crudeoil_pre_all((i-1)*test_step+1:i*test_step,:)];
-    plot(date_roll,crudeoil_roll)
+    plot(date_roll,crudeoil_roll,'LineWidth',0.3)
     hold on
     plot(date_roll,crudeoil_roll_fit,'LineWidth',0.3)
     if tit0==2 && tit0==3

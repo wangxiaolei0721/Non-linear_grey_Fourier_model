@@ -31,6 +31,14 @@ tit={['(a) First roll '],['(b) Second roll '],['(c) Third roll '],['(d) Fourth r
     ['(e) Fifth roll '],['(f) Sixth roll '],['(g) Third roll '],['(h) Seventh roll '],...
     ['(h) Eighth roll ']};
 tit0=1;
+col_matrix = [0,0,0;
+    87, 103, 250;
+    160, 98, 205;
+    60, 191, 255;
+    150, 233, 130;
+    240, 163, 70;
+    239, 55, 81]/255;
+colororder(col_matrix);
 len=["Actual data","GM(1,1|cos,sin)","DGGM(1,1)","SGM(1,1)","GFM(1,1,5)","DGFM(1,1,5)","NGFM(1,1,5)"];
 tiledlayout(3,3,'TileSpacing','Compact','Padding','Compact'); % new subfigure
 while (k+train_data_length+test_step-1)<=datalength
@@ -62,7 +70,7 @@ while (k+train_data_length+test_step-1)<=datalength
     %     disp(k)
     % figure setting
     nexttile;
-    plot([date_train;date_test],[ crudeoil_train;crudeoil_test])
+    plot([date_train;date_test],[ crudeoil_train;crudeoil_test],'LineWidth',0.3)
     hold on
     plot([date_train;date_test],crudeoil_fit_pre,'LineWidth',0.3)
     rectangle('Position', [0, 1000, 5480, 1000]);
@@ -97,5 +105,4 @@ mae2latex(1,:)=mae_fit;
 mae2latex(2,:)=mae_pre;
 % save
 savefig(gcf,'.\figure\crude_oil_grey.fig');
-
 

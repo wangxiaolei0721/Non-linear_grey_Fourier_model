@@ -30,7 +30,7 @@ val_data_length = 16;
 test_data_length = 12;
 % plot
 figure('unit','centimeters','position',[5,5,30,15],'PaperPosition',[5, 5, 30,15],'PaperSize',[30,15]);
-plot(datequarter,electricityquarter,'-o')
+plot(datequarter,electricityquarter,'-o','LineWidth',1.5)
 rectangle('Position', [-55, 0, 2185, 600],'FaceColor',[0.05 0.05 0.05 0.05]);
 rectangle('Position', [2130, 0, 365*4, 600],'FaceColor',[0.9290 0.6940 0.1250 0.05]);
 rectangle('Position', [2130+365*4, 0, 365*3, 600],'FaceColor',[.8500 0.3250 0.0980 0.10]);
@@ -114,7 +114,8 @@ xlabel('Date','FontSize',12);
 xtickformat('yyyy-MM')
 ylabel({'electricity consumption (Twh)'},'FontSize',14);
 savefig(gcf,'..\figure\electricity_consumption.fig');
+exportgraphics(gcf,'F:\博士\Nonlinear grey Fourier model\manuscript\figure\electricity_consumption.pdf')
 % save
 save('electricityconsumption.mat','electricityquarter','datequarter')
-
+writematrix(electricityquarter,'D:\workspace\R\NGFM\data\electricityquarter.csv');
 

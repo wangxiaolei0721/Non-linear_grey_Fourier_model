@@ -29,7 +29,7 @@ train_test_data_index = [(length(crudeoil)-test_data_length-train_data_length)+1
 val_step = 12;
 test_step = 12;
 figure('unit','centimeters','position',[5,5,30,15],'PaperPosition',[5, 5, 30,15],'PaperSize',[30,15]);
-plot(date,crudeoil,'-o','MarkerSize',2)
+plot(date,crudeoil,'-o','MarkerSize',2,'LineWidth',0.8)
 rectangle('Position', [0, 800, 365.4*15, 1200],'FaceColor',[0.05 0.05 0.05 0.05]);
 rectangle('Position', [365.4*15, 800, 365.4*9, 1200],'FaceColor',[0.9290 0.6940 0.1250 0.05]);
 rectangle('Position', [365.4*24, 800, 365.4*9, 1200],'FaceColor',[.8500 0.3250 0.0980 0.10]);
@@ -75,5 +75,7 @@ xlabel('Date','FontSize',12);
 xtickformat('yyyy-MM')
 ylabel({'crudeoil (10kt)'},'FontSize',14);
 savefig(gcf,'..\figure\crude_oil.fig');
+exportgraphics(gcf,'F:\博士\Nonlinear grey Fourier model\manuscript\figure\crude_oil.pdf')
 % save
 save('crudeoilproduction.mat','crudeoil','date')
+writematrix(crudeoil,'D:\workspace\R\NGFM\data\crudeoilproduction.csv');

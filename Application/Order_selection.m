@@ -28,6 +28,7 @@ for i = 1:4 % road1 to road4
     [ xfreq,xpower]=fourier_transform(road_train_val);
     % peak detection plot
     findpeaks(xpower,xfreq,'MinPeakDistance',1/24,'MinPeakProminence',Prominence(i));% 'Annotate','extents','prominence', 'Threshold'
+    set(findall(gcf,'type','line'),'linewidth',1)
     grid off
     if i==1
         xline(xfreq(46),'--','HandleVisibility','off')

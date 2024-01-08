@@ -18,7 +18,7 @@ location_val=[30, 0, 16, 50;30, 20, 16, 40;30, 0, 16, 60;30, 0, 16, 60];
 location_test=[46, 0, 15, 50;46, 20, 15, 40;46, 0, 15, 60;46, 0, 15, 60];
 for i=1:4
     nexttile
-    plot(time,roadhour(1:end,roadsample(i)),'LineStyle',"-",'LineWidth',0.3,'MarkerSize',4,'MarkerEdgeColor',[0.8500 0.3250 0.0980]);
+    plot(time,roadhour(1:end,roadsample(i)),'LineStyle',"-",'LineWidth',0.6,'MarkerSize',4,'MarkerEdgeColor',[0.8500 0.3250 0.0980]);
     rectangle('Position', location_train(i,:),'FaceColor',[0.05 0.05 0.05 0.05]);
     rectangle('Position', location_val(i,:),'FaceColor',[0.9290 0.6940 0.1250 0.05]);
     rectangle('Position', location_test(i,:),'FaceColor',[.8500 0.3250 0.0980 0.10]);

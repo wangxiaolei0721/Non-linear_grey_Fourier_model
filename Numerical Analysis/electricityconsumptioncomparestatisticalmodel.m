@@ -104,6 +104,13 @@ mae2latex(2,:)=mae_pre;
 fig=figure('unit','centimeters','position',[2,2,15,15],'PaperPosition',[2, 2, 15,15],'PaperSize',[15,15]);
 tit={['(a) First roll '],['(b) Second roll '],['(c) Third roll '],['(d) Fourth roll '] };
 tit0=1;
+col_matrix = [0,0,0;
+    87, 103, 250;
+    160, 98, 205;
+    60, 191, 255;
+    240, 163, 70;
+    239, 55, 81]/255;
+colororder(col_matrix);
 len=["Actual data","SARIMA","ES","NNAR","DNN","NGFM(1,1,1)"];
 tiledlayout(3,1,'TileSpacing','Compact','Padding','Compact'); % new subfigure
 for i=1:3
@@ -111,9 +118,9 @@ for i=1:3
     datequarter_roll=[datequarter_train_all((i-1)*train_data_length+1:i*train_data_length);datequarter_test_all((i-1)*test_step+1:i*test_step)];
     electricity_roll=[electricity_train_all((i-1)*train_data_length+1:i*train_data_length);electricity_test_all((i-1)*test_step+1:i*test_step)];
     electricity_roll_fit=[electricity_fit_all((i-1)*train_data_length+1:i*train_data_length,:);electricity_pre_all((i-1)*test_step+1:i*test_step,:)];
-    plot(datequarter_roll,electricity_roll)
+    plot(datequarter_roll,electricity_roll,'LineWidth',0.7)
     hold on
-    plot(datequarter_roll,electricity_roll_fit,'LineWidth',0.3)
+    plot(datequarter_roll,electricity_roll_fit,'LineWidth',0.7)
     rectangle('Position', [-60, 0, 2190, 600]);
     rectangle('Position', [2130, 0, 380, 600],'FaceColor',[0.05 0.05 0.05 0.05]);
     set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),

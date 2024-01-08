@@ -62,4 +62,5 @@ for i = 1:numel(allFigures)
     set(gca,'FontName','Book Antiqua','FontSize',10)
     title(tit(j),'FontWeight','bold','FontSize',12);
 end
+% savefig(gcf,'.\figure\hyperparopt.fig');
 toc

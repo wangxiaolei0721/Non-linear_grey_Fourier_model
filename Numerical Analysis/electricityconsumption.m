@@ -22,7 +22,7 @@ tiledlayout(3,1,'TileSpacing','Compact','Padding','Compact'); % new subfigure
 electricity_train = electricityquarter(train_data_index);
 datequarter_train=datequarter(train_data_index);
 nexttile;
-plot(datequarter_train,electricity_train)
+plot(datequarter_train,electricity_train,'LineWidth',1.5)
 set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),
 xlabel('Date','FontSize',12);
 xtickformat('yyyy-MM')
@@ -30,7 +30,7 @@ xtickformat('yyyy-MM')
 electricity_train_val = electricityquarter(train_val_data_index);
 datequarter_train_val = datequarter(train_val_data_index);
 nexttile;
-plot(datequarter_train_val,electricity_train_val)
+plot(datequarter_train_val,electricity_train_val,'LineWidth',1.5)
 set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),
 xlabel('Date','FontSize',12);
 xtickformat('yyyy-MM')
@@ -38,7 +38,7 @@ xtickformat('yyyy-MM')
 electricity_train_test = electricityquarter(train_test_data_index);
 datequarter_train_test = datequarter(train_test_data_index);
 nexttile;
-plot(datequarter_train_test,electricity_train_test)
+plot(datequarter_train_test,electricity_train_test,'LineWidth',1.5)
 set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),
 xlabel('Date','FontSize',12);
 xtickformat('yyyy-MM')
@@ -50,7 +50,7 @@ figure
 [ xfreq,xpower] = fourier_transform(electricity_train_val_detrend(2:end));
 % peak detection plot
 % findpeaks(xpower,xfreq,'MinPeakDistance',1/4,'MinPeakProminence',100000);% 'Annotate','extents','prominence', 'Threshold'
-plot(xfreq,xpower)
+plot(xfreq,xpower,'LineWidth',1.5)
 grid off
 xline(xfreq(10),'--','HandleVisibility','off')
 text(xfreq(10),500000,['$\rightarrow f$=',num2str(xfreq(10))],'Interpreter','latex')
@@ -94,6 +94,7 @@ save('.\data\electricityhyperparameter.mat','gammaopt','sigmaopt')
 allFigures = findall(0, 'Type', 'figure');
 figure(allFigures(1));
 set(gca,'FontName','Book Antiqua','FontSize',10)
+set(findall(gcf,'type','line'),'linewidth',1.5)
 % savefig(gcf,'.\figure\electricity_consumption_process.fig');
 figure(allFigures(2));
 set(gca,'FontName','Book Antiqua','FontSize',10)
@@ -138,9 +139,9 @@ while (k+train_data_length +test_step-1)<=datalength
     k=k+test_step;
     % figure setting
     nexttile;
-    plot([datequarter_train;datequarter_test],[ electricity_train;electricity_test])
+    plot([datequarter_train;datequarter_test],[ electricity_train;electricity_test],'LineWidth',1.5)
     hold on
-    plot([datequarter_train;datequarter_test],electricity_fit_pre)
+    plot([datequarter_train;datequarter_test],electricity_fit_pre,'LineWidth',1.5)
     rectangle('Position', [-55, 0, 2185, 600]);
     rectangle('Position', [2130, 0, 380, 600],'FaceColor',[0.05 0.05 0.05 0.05]);
     set(gca,'FontName','Book Antiqua','FontSize',10); % 'YLim',ylim(i,:),
